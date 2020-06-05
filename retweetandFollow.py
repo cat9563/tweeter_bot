@@ -20,12 +20,13 @@ def searchBot():
             print(e.reason)
             time.sleep(30)
             
-def searchBotCount(hashtag="#doggo", tweetNumber=5):
+def searchBotCount(hashtag="#doggo", tweetNumber=1):
     tweets = tweepy.Cursor(api.search, hashtag).items(tweetNumber)
     for tweet in tweets:
         try:
             tweet.retweet()
             tweet.favorite()
+            api.create_friendship(tweet.user.id)
             print("bork bork")
             time.sleep(1)
         except tweepy.TweepError as e:
