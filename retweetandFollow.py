@@ -25,6 +25,7 @@ def searchBotCount(hashtag="#doggo", tweetNumber=5):
     for tweet in tweets:
         try:
             tweet.retweet()
+            tweet.favorite()
             print("bork bork")
             time.sleep(1)
         except tweepy.TweepError as e:
